@@ -25,7 +25,7 @@ export function EditableContactLeadForm() {
       const data = await response.json().catch(() => ({}))
       if (!response.ok) throw new Error(data?.message || 'Unable to send your message.')
       setStatus('success')
-      setMessage(data?.message || 'Thanks. Your message has been received.')
+      setMessage(data?.message || 'Thanks — a human editor will read it soon.')
       form.reset()
     } catch (error) {
       setStatus('error')
@@ -34,36 +34,42 @@ export function EditableContactLeadForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="mt-6 rounded-sm border border-[var(--editable-border)] bg-[var(--slot4-panel-bg)] p-6 md:p-8">
+    <form onSubmit={handleSubmit} className="mt-6 grid gap-4">
       <div className="grid gap-4 md:grid-cols-2">
         <Field name="name" label="Full name" placeholder="Your name" required />
-        <Field name="email" type="email" label="Email address" placeholder="you@example.com" required />
+        <Field name="email" type="email" label="Email address" placeholder="you@yourstreet.com" required />
       </div>
-      <div className="mt-4 grid gap-4 md:grid-cols-2">
-        <Field name="phone" label="Phone number" placeholder="Optional" />
-        <Field name="subject" label="Subject" placeholder="How can we help?" />
+      <div className="grid gap-4 md:grid-cols-2">
+        <Field name="phone" label="Phone" placeholder="Optional" />
+        <Field name="subject" label="About" placeholder="Corrections, submissions, something else" />
       </div>
-      <label className="mt-4 grid gap-2 text-sm font-semibold text-[var(--slot4-muted-text)]">
+      <label className="grid gap-2 text-[13px] font-medium text-[var(--slot4-muted-text)]">
         Message
         <textarea
           name="message"
           required
           rows={6}
-          placeholder="Tell us what you need help with..."
-          className="rounded-sm border border-[var(--editable-border)] bg-[var(--slot4-surface-bg)] px-4 py-3 text-base font-medium text-[var(--slot4-page-text)] outline-none transition placeholder:text-[var(--slot4-soft-muted-text)] focus:border-[var(--slot4-accent)]"
+          placeholder="Tell us what you need — an editor will reply."
+          className="rounded-[8px] border border-[color:var(--editable-border)] bg-white px-4 py-3 text-[15px] text-[var(--slot4-page-text)] outline-none transition-colors duration-300 placeholder:text-[var(--slot4-muted-text)] focus:border-[var(--slot4-page-text)]"
         />
       </label>
       <input name="company" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
       {message ? (
-        <div className={`mt-5 flex items-start gap-3 rounded-sm px-4 py-3 text-sm font-semibold ${status === 'success' ? 'bg-emerald-950/40 text-emerald-300' : 'bg-red-950/40 text-red-300'}`}>
-          {status === 'success' ? <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0" /> : null}
+        <div
+          className={`flex items-start gap-2 rounded-[8px] border px-4 py-3 text-[14px] ${
+            status === 'success'
+              ? 'border-[color:var(--editable-border)] bg-[var(--slot4-panel-bg)] text-[var(--slot4-page-text)]'
+              : 'border-[color:var(--editable-border)] bg-white text-[var(--slot4-page-text)]'
+          }`}
+        >
+          {status === 'success' ? <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[var(--slot4-accent-fill)]" /> : null}
           <span>{message}</span>
         </div>
       ) : null}
       <button
         type="submit"
         disabled={status === 'submitting'}
-        className="mt-6 inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-[var(--slot4-accent-fill)] px-6 text-sm font-semibold uppercase tracking-[0.18em] text-[var(--slot4-on-accent)] shadow-[0_8px_24px_rgba(79,70,229,0.28)] transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-70"
+        className="mt-2 inline-flex h-12 w-full items-center justify-center gap-2 rounded-full bg-[var(--slot4-accent-fill)] text-[14px] font-medium text-[var(--slot4-on-accent)] transition-colors duration-300 hover:bg-[var(--slot4-page-text)] hover:text-white disabled:cursor-not-allowed disabled:opacity-70"
       >
         {status === 'submitting' ? <Loader2 className="h-4 w-4 animate-spin" /> : null}
         Send message
@@ -72,16 +78,28 @@ export function EditableContactLeadForm() {
   )
 }
 
-function Field({ name, label, type = 'text', placeholder, required = false }: { name: string; label: string; type?: string; placeholder?: string; required?: boolean }) {
+function Field({
+  name,
+  label,
+  type = 'text',
+  placeholder,
+  required = false,
+}: {
+  name: string
+  label: string
+  type?: string
+  placeholder?: string
+  required?: boolean
+}) {
   return (
-    <label className="grid gap-2 text-sm font-semibold text-[var(--slot4-muted-text)]">
+    <label className="grid gap-2 text-[13px] font-medium text-[var(--slot4-muted-text)]">
       {label}
       <input
         name={name}
         type={type}
         required={required}
         placeholder={placeholder}
-        className="h-12 rounded-sm border border-[var(--editable-border)] bg-[var(--slot4-surface-bg)] px-4 text-base font-medium text-[var(--slot4-page-text)] outline-none transition placeholder:text-[var(--slot4-soft-muted-text)] focus:border-[var(--slot4-accent)]"
+        className="h-12 rounded-[8px] border border-[color:var(--editable-border)] bg-white px-4 text-[15px] text-[var(--slot4-page-text)] outline-none transition-colors duration-300 placeholder:text-[var(--slot4-muted-text)] focus:border-[var(--slot4-page-text)]"
       />
     </label>
   )
