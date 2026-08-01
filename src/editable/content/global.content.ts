@@ -3,52 +3,60 @@ import { slot4BrandConfig } from '@/editable/theme/brand.config'
 export const globalContent = {
   site: {
     name: slot4BrandConfig.siteName,
-    tagline: slot4BrandConfig.tagline || 'Independent reading platform',
+    tagline: slot4BrandConfig.tagline || 'A community directory and open library',
     domain: slot4BrandConfig.domain,
     baseUrl: slot4BrandConfig.baseUrl,
   },
   nav: {
-    tagline: 'Independent reading platform',
+    tagline: 'A community directory and open library',
     primaryLinks: [
-      { label: 'Articles', href: '/articles' },
-      { label: 'Visuals', href: '/image-sharing' },
-      { label: 'Listings', href: '/listings' },
+      { label: 'About', href: '/about' },
       { label: 'Contact', href: '/contact' },
     ],
     actions: {
-      primary: { label: 'Start exploring', href: '/' },
-      secondary: { label: 'Submit', href: '/contact' },
+      primary: { label: 'Get started', href: '/signup' },
+      secondary: { label: 'Sign in', href: '/login' },
     },
   },
   footer: {
-    tagline: 'Stories, resources, and discoverable posts',
-    description: 'A connected publishing surface for articles, visuals, listings, profiles, bookmarks, and downloadable resources.',
+    tagline: 'A community directory and an open library',
+    description:
+      'A quietly-run directory of places, people, and organisations in the neighbourhood — plus a shelf of open files you can download, read, and forward.',
     columns: [
       {
-        title: 'Explore',
+        title: 'Discover',
         links: [
-          { label: 'Articles', href: '/articles' },
-          { label: 'Listings', href: '/listings' },
-          { label: 'Images', href: '/image-sharing' },
-          { label: 'PDF Library', href: '/pdf' },
+          { label: 'Community Directory', href: '/listings' },
+          { label: 'Field Notes', href: '/pdf' },
+          { label: 'Field journal', href: '/articles' },
+          { label: 'Contact sheet', href: '/image-sharing' },
         ],
       },
       {
-        title: 'Site',
+        title: 'Resources',
         links: [
           { label: 'About', href: '/about' },
+          { label: 'Search', href: '/search' },
           { label: 'Contact', href: '/contact' },
         ],
       },
+      {
+        title: 'Account',
+        links: [
+          { label: 'Sign in', href: '/login' },
+          { label: 'Get started', href: '/signup' },
+          { label: 'Submit a record', href: '/create' },
+        ],
+      },
     ],
-    bottomNote: 'Built for clean discovery and connected publishing.',
+    bottomNote: 'Independently run. Made in the neighbourhood.',
   },
   commonLabels: {
-    readMore: 'Read more',
+    readMore: 'Continue reading',
     viewAll: 'View all',
     explore: 'Explore',
     latest: 'Latest',
     related: 'Related',
-    published: 'Published',
+    published: 'Updated',
   },
 } as const

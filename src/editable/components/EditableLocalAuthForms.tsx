@@ -24,15 +24,27 @@ const readUsers = (): LocalUser[] => {
   }
 }
 
-const saveUsers = (users: LocalUser[]) => window.localStorage.setItem(USERS_KEY, JSON.stringify(users))
+const saveUsers = (users: LocalUser[]) =>
+  window.localStorage.setItem(USERS_KEY, JSON.stringify(users))
 
 const saveSession = (user: Pick<LocalUser, 'name' | 'email'>) => {
-  window.localStorage.setItem(SESSION_KEY, JSON.stringify({ name: user.name, email: user.email, loggedInAt: new Date().toISOString() }))
+  window.localStorage.setItem(
+    SESSION_KEY,
+    JSON.stringify({
+      name: user.name,
+      email: user.email,
+      loggedInAt: new Date().toISOString(),
+    }),
+  )
   window.dispatchEvent(new Event('slot4-auth-change'))
 }
 
-const inputClass = 'h-12 w-full rounded-lg border border-[var(--editable-border)] bg-[var(--slot4-surface-bg)] px-4 text-sm font-medium text-[var(--slot4-page-text)] outline-none transition placeholder:text-[var(--slot4-muted-text)] focus:border-[var(--slot4-accent)]'
-const buttonClass = 'inline-flex h-12 w-full items-center justify-center rounded-lg bg-[var(--slot4-accent)] px-6 text-sm font-bold text-[var(--slot4-on-accent)] transition hover:brightness-95 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60'
+const inputClass =
+  'h-12 w-full rounded-[8px] border border-[color:var(--editable-border)] bg-white px-4 text-[15px] text-[var(--slot4-page-text)] outline-none transition-colors duration-300 placeholder:text-[var(--slot4-muted-text)] focus:border-[var(--slot4-page-text)]'
+const buttonClass =
+  'inline-flex h-12 w-full items-center justify-center rounded-full bg-[var(--slot4-accent-fill)] px-6 text-[14px] font-medium text-[var(--slot4-on-accent)] transition-colors duration-300 hover:bg-[var(--slot4-page-text)] hover:text-white disabled:cursor-not-allowed disabled:opacity-60'
+const messageClass =
+  'rounded-[8px] border border-[color:var(--editable-border)] bg-[var(--slot4-panel-bg)] px-4 py-3 text-[14px] font-medium text-[var(--slot4-page-text)]'
 
 export function EditableLocalLoginForm() {
   const router = useRouter()
@@ -57,11 +69,28 @@ export function EditableLocalLoginForm() {
   }
 
   return (
-    <form className="mt-6 grid gap-4" onSubmit={submit}>
-      <input className={inputClass} type="email" placeholder="Email address" value={email} onChange={(event) => setEmail(event.target.value)} required />
-      <input className={inputClass} type="password" placeholder="Password" value={password} onChange={(event) => setPassword(event.target.value)} required />
-      {message ? <p className={`rounded-lg px-4 py-3 text-sm font-semibold ${status === 'success' ? 'bg-emerald-50 text-emerald-700' : 'bg-[var(--slot4-accent-soft)] text-[var(--slot4-accent)]'}`}>{message}</p> : null}
-      <button type="submit" className={buttonClass}>{pagesContent.auth.login.submitLabel}</button>
+    <form className="mt-6 grid gap-3" onSubmit={submit}>
+      <input
+        className={inputClass}
+        type="email"
+        placeholder="Email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        required
+      />
+      <input
+        className={inputClass}
+        type="password"
+        placeholder="Password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        required
+      />
+      {message ? <p className={messageClass}>{message}</p> : null}
+      <button type="submit" className={buttonClass}>
+        {pagesContent.auth.login.submitLabel}
+      </button>
+      {status === 'error' ? null : null}
     </form>
   )
 }
@@ -72,7 +101,7 @@ export function EditableLocalSignupForm() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [message, setMessage] = useState<string | null>(null)
-  const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle')
+  const [_status, setStatus] = useState<'idle' | 'success' | 'error'>('idle')
 
   const submit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -90,7 +119,10 @@ export function EditableLocalSignupForm() {
       password,
       createdAt: new Date().toISOString(),
     }
-    saveUsers([nextUser, ...users.filter((item) => item.email.toLowerCase() !== normalizedEmail)])
+    saveUsers([
+      nextUser,
+      ...users.filter((item) => item.email.toLowerCase() !== normalizedEmail),
+    ])
     saveSession(nextUser)
     setStatus('success')
     setMessage(pagesContent.auth.signup.success)
@@ -98,12 +130,34 @@ export function EditableLocalSignupForm() {
   }
 
   return (
-    <form className="mt-6 grid gap-4" onSubmit={submit}>
-      <input className={inputClass} placeholder="Full name" value={name} onChange={(event) => setName(event.target.value)} required />
-      <input className={inputClass} type="email" placeholder="Email address" value={email} onChange={(event) => setEmail(event.target.value)} required />
-      <input className={inputClass} type="password" placeholder="Password" value={password} onChange={(event) => setPassword(event.target.value)} required />
-      {message ? <p className={`rounded-lg px-4 py-3 text-sm font-semibold ${status === 'success' ? 'bg-emerald-50 text-emerald-700' : 'bg-[var(--slot4-accent-soft)] text-[var(--slot4-accent)]'}`}>{message}</p> : null}
-      <button type="submit" className={buttonClass}>{pagesContent.auth.signup.submitLabel}</button>
+    <form className="mt-6 grid gap-3" onSubmit={submit}>
+      <input
+        className={inputClass}
+        placeholder="Full name"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+        required
+      />
+      <input
+        className={inputClass}
+        type="email"
+        placeholder="Email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        required
+      />
+      <input
+        className={inputClass}
+        type="password"
+        placeholder="Password (min 4 characters)"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        required
+      />
+      {message ? <p className={messageClass}>{message}</p> : null}
+      <button type="submit" className={buttonClass}>
+        {pagesContent.auth.signup.submitLabel}
+      </button>
     </form>
   )
 }
