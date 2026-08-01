@@ -3,157 +3,184 @@ import { slot4BrandConfig } from '@/editable/theme/brand.config'
 export const pagesContent = {
   home: {
     metadata: {
-      title: 'Stories, visuals, and discoverable content',
-      description: 'Explore articles, images, listings, and curated posts through a cleaner reading-first experience.',
-      openGraphTitle: 'Stories, visuals, and discoverable content',
-      openGraphDescription: 'Discover articles, visual posts, and connected content through a calmer reading-first experience.',
-      keywords: ['story platform', 'article site', 'visual content', 'content discovery'],
+      title: `${slot4BrandConfig.siteName} — Community Directory & Field Notes`,
+      description:
+        'A neighbourhood-run directory of local places, people, and organisations — alongside an open library of downloadable guides and reference material.',
+      openGraphTitle: `${slot4BrandConfig.siteName} — Community Directory & Field Notes`,
+      openGraphDescription:
+        'Verified local records, editor-reviewed. Open files you can read, save, and share.',
+      keywords: [
+        'community directory',
+        'local business directory',
+        'open library',
+        'downloadable guides',
+        'neighbourhood',
+      ],
     },
     hero: {
-      badge: 'Latest stories and visuals',
-      title: ['A thoughtful home for', 'stories, visuals, and discovery.'],
-      description: 'Explore fresh articles, image-led posts, and discoverable content across the platform through a calmer and clearer browsing experience.',
-      primaryCta: { label: 'Read latest stories', href: '/article' },
-      secondaryCta: { label: 'Explore visuals', href: '/image' },
-      searchPlaceholder: 'Search stories, visuals, listings, and more',
-      focusLabel: 'Focus',
-      featureCardBadge: 'latest cover rotation',
-      featureCardTitle: 'Latest posts shape the visual identity of the homepage.',
-      featureCardDescription: 'Recent images and stories stay at the center of the experience without changing any core platform behavior.',
+      badge: 'Directory + open library',
+      title: [
+        'Verified local records, reviewed by hand.',
+        'Open files, ready when you are.',
+      ],
+      description:
+        `${slot4BrandConfig.siteName} keeps a hand-verified directory of the places, people, and organisations around us — and a shelf of downloadable Field Notes any neighbour can read, save, or forward.`,
+      primaryCta: { label: 'Browse the directory', href: '/listings' },
+      secondaryCta: { label: 'Open the library', href: '/pdf' },
+      searchPlaceholder: 'Search a name, a category, a title…',
+      focusLabel: 'Right now',
+      featureCardBadge: 'This week',
+      featureCardTitle: 'Every record in the directory is reviewed by a human editor.',
+      featureCardDescription:
+        'Address, hours, and contact are checked before a listing goes live — and re-checked when neighbours flag a change.',
     },
     intro: {
-      badge: 'About the platform',
-      title: 'Built for reading, browsing, and connecting different kinds of content.',
+      badge: 'About this place',
+      title: 'A quiet, community-run home for local information.',
       paragraphs: [
-        'This site brings together article-style reading, visual browsing, and structured discovery so visitors can move naturally between different content types.',
-        'Instead of separating stories, visuals, and supporting resources into disconnected surfaces, the platform keeps them connected in one place with consistent navigation and easier exploration.',
-        'Whether someone starts with a story, an image-led post, a listing, or a resource page, they can keep discovering related content without friction.',
+        `${slot4BrandConfig.siteName} exists to make it easier for a neighbour to find a butcher, a school, a plumber, or a reading room without wading through ranked ads.`,
+        'The directory is verified by human editors before publication, and the open library is stocked with files the community actually needs — licence templates, meeting minutes, small-business guides, safety briefs.',
+        'Nothing here is pay-to-list, and nothing on the shelf is a sponsored link.',
       ],
-      sideBadge: 'At a glance',
+      sideBadge: 'The rhythm',
       sidePoints: [
-        'Reading-first homepage with stronger emphasis on stories and imagery.',
-        'Connected sections for articles, visuals, listings, and supporting resources.',
-        'Cleaner browsing rhythm designed to make exploration feel easier.',
-        'Lightweight interactions that keep the experience fast and readable.',
+        'Directory records reviewed by hand.',
+        'Field Notes downloadable in the open.',
+        'No pay-to-list, no sponsored placements.',
+        'Neighbours can submit; editors can publish.',
       ],
-      primaryLink: { label: 'Browse articles', href: '/article' },
-      secondaryLink: { label: 'See visuals', href: '/image' },
+      primaryLink: { label: 'Browse the directory', href: '/listings' },
+      secondaryLink: { label: 'Open the library', href: '/pdf' },
     },
     cta: {
-      badge: 'Start exploring',
-      title: 'Explore articles, visuals, and resources through one connected experience.',
-      description: 'Move between articles, image-led posts, listings, and resources through one clearer and more connected visual system.',
-      primaryCta: { label: 'Browse Articles', href: '/article' },
-      secondaryCta: { label: 'Contact Sales', href: '/contact' },
+      badge: 'Add to the record',
+      title: 'Know a place we’ve missed? Add it to the directory.',
+      description:
+        'Submit a business, a service, or a community group and an editor will review it within a few days. If you have a file to share, add it to the library instead.',
+      primaryCta: { label: 'Submit a record', href: '/create' },
+      secondaryCta: { label: 'Talk to the editors', href: '/contact' },
     },
     taskSection: {
       heading: 'Latest {label}',
-      descriptionSuffix: 'Browse the newest posts in this section.',
+      descriptionSuffix: 'Fresh entries from this section.',
     },
   },
   about: {
-    badge: 'Our Story',
-    title: 'A calmer, clearer way to explore content.',
-    description: `${slot4BrandConfig.siteName} is built to make long-form reading, visual discovery, and supporting resources feel like one unified experience.`,
+    badge: 'About the platform',
+    title: 'A neighbourhood directory and an open library, run in the open.',
+    description: `${slot4BrandConfig.siteName} is a two-part community platform — a verified directory of local places and people, plus a shelf of open files anyone can download. It exists to make useful local information easier to find, and easier to trust.`,
     paragraphs: [
-      'Instead of splitting everything into disconnected pages, the platform keeps related content easy to move through and easy to understand.',
-      'Whether someone starts with an article, listing, image post, or resource page, they can continue exploring without losing context.',
+      'The directory is compiled by a small editorial team. Every record is reviewed against a public checklist before publication: address, hours, contact details, and a plain description of what the place actually is. Anyone can submit; editors publish.',
+      'The open library sits alongside the directory as a shelf of downloadable Field Notes — licence templates, community meeting minutes, small-business guides, and reference briefs. Files are hosted in the open, checked for format, and marked with a last-updated date.',
+      'We are funded independently, we do not accept paid placements, and we do not rank entries by anything other than what an editor believes is useful.',
     ],
     values: [
       {
-        title: 'Reading-first experience',
-        description: 'We prioritize clarity, pacing, and structure so people can read, browse, and discover without noise.',
+        title: 'Reviewed by hand',
+        description:
+          'Every directory record and every library file passes an editor before it goes live. No auto-scraping, no sponsored slots.',
       },
       {
-        title: 'Connected content surfaces',
-        description: 'Articles, visual posts, listings, resources, and profiles stay connected so discovery feels natural across the site.',
+        title: 'Open by default',
+        description:
+          'Field Notes are downloadable without a sign-up. The directory is free to browse, free to submit to, free to correct.',
       },
       {
-        title: 'Simple and trustworthy',
-        description: 'We focus on clean navigation and clear page structure to help visitors find useful content faster.',
+        title: 'Neighbourhood-first',
+        description:
+          'We prioritise records with a real local address and a real person to talk to. Chains and platforms come second.',
       },
     ],
   },
   contact: {
-    eyebrow: `Contact ${slot4BrandConfig.siteName}`,
-    title: 'A support page that matches the product, not a generic contact form.',
-    description: 'Tell us what you are trying to publish, fix, or launch. We will route it through the right lane instead of forcing every request into the same support bucket.',
-    formTitle: 'Send a message',
+    eyebrow: `Write to ${slot4BrandConfig.siteName}`,
+    title: 'Reach an editor — for corrections, submissions, or a quiet word.',
+    description:
+      'Directory corrections, missing records, broken files, or a Field Note you’d like added — a human reads every message and replies within two working days.',
+    formTitle: 'Send a note',
   },
-
   search: {
     metadata: {
       title: 'Search',
-      description: 'Search posts, topics, categories, and content across the site.',
+      description:
+        'Search the community directory and the open library in one place.',
     },
     hero: {
-      badge: 'Search the archive',
-      title: 'Find stories, listings, visuals, and resources faster.',
-      description: 'Use keywords, categories, and content types to discover posts from every active section of the site.',
-      placeholder: 'Search by keyword, topic, category, or title',
+      badge: 'Everything, one field',
+      title: 'Search the directory and the library at once.',
+      description:
+        'Type a name, a category, or a title. Results are grouped by type so you can jump straight to what you need.',
+      placeholder: 'Type a name, category, or title…',
     },
-    resultsTitle: 'Latest searchable content',
+    resultsTitle: 'Matching records and files',
   },
   create: {
     metadata: {
-      title: 'Create',
-      description: 'Create and submit new content for the site.',
+      title: 'Submit a record',
+      description:
+        'Add a directory record or upload a file to the open library.',
     },
     locked: {
-      badge: 'Creator access',
-      title: 'Login to create new content.',
-      description: 'Use your account to open the publishing workspace and create posts for the active sections of this site.',
+      badge: 'Editor access',
+      title: 'Sign in to add to the directory or the library.',
+      description:
+        'An account lets you submit directory records for review, upload files to the library, and track what an editor has picked up.',
     },
     hero: {
-      badge: 'Publishing workspace',
-      title: 'Create content for every active section.',
-      description: 'Choose the content type, add details, and prepare a clean post with images, links, summary, and body content.',
+      badge: 'Submissions desk',
+      title: 'Add a place to the directory, or a file to the library.',
+      description:
+        'Fill in what you know — an editor will read it, check the details, and reply within a few days. If we need more, we’ll ask.',
     },
-    formTitle: 'Content details',
-    submitLabel: 'Submit content',
-    successTitle: 'Content submitted successfully.',
+    formTitle: 'Submission details',
+    submitLabel: 'Send to editors',
+    successTitle: 'Sent — an editor will be in touch.',
   },
   auth: {
     login: {
-      metadataDescription: 'Login page for this site.',
-      badge: 'Member access',
-      title: 'Welcome back to your publishing space.',
-      description: 'Login to continue browsing, managing submissions, and creating new content from your account.',
-      formTitle: 'Login',
+      metadataDescription: `Sign in to ${slot4BrandConfig.siteName}.`,
+      badge: 'Member sign-in',
+      title: 'Welcome back to the editors’ desk.',
+      description:
+        'Sign in to track your submissions, upload files to the library, and manage the records you’ve added to the directory.',
+      formTitle: 'Sign in',
       submitLabel: 'Continue',
-      noAccount: 'No account matched these details. Create an account first, then login.',
-      success: 'Login successful. Redirecting...',
+      noAccount:
+        'That combination didn’t match. Try again, or create an account.',
+      success: 'Signed in — taking you back to your work.',
       createCta: 'Create an account',
     },
     signup: {
-      metadataDescription: 'Signup page for this site.',
-      badge: 'Site access',
-      title: 'Create your account and start publishing.',
-      description: 'Create an account to access the publishing workspace, save details, and submit content through the site.',
+      metadataDescription: `Create an account on ${slot4BrandConfig.siteName}.`,
+      badge: 'New member',
+      title: 'Set up an account and add to the record.',
+      description:
+        'An account unlocks the submissions desk, the file uploader for the library, and the ability to leave notes on your own records.',
       formTitle: 'Create account',
       submitLabel: 'Create account',
-      passwordShort: 'Use at least 4 characters for the password.',
-      success: 'Account created successfully. Redirecting...',
-      loginCta: 'Login',
+      passwordShort: 'Use at least four characters.',
+      success: 'Account ready — taking you to the desk.',
+      loginCta: 'Sign in',
     },
   },
   detailPages: {
     article: {
-      relatedTitle: 'Related articles',
-      fallbackTitle: 'Article details',
+      relatedTitle: 'From the field journal',
+      fallbackTitle: 'Field journal entry',
     },
     listing: {
-      relatedTitle: 'Related listings',
-      fallbackTitle: 'Listing details',
+      relatedTitle: 'Other neighbours in the directory',
+      fallbackTitle: 'Directory record',
     },
     image: {
-      relatedTitle: 'Related visuals',
-      fallbackTitle: 'Image details',
+      relatedTitle: 'More frames from the contact sheet',
+      fallbackTitle: 'Contact sheet frame',
     },
     profile: {
-      relatedTitle: 'Suggested articles',
-      fallbackDescription: 'Profile details will appear here once available.',
-      visitButton: 'Visit Official Site',
+      relatedTitle: 'Recent from this neighbour',
+      fallbackDescription:
+        'The full profile will appear here once an editor has reviewed it.',
+      visitButton: 'Visit their site',
     },
   },
 } as const
